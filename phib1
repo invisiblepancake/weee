@@ -1,0 +1,34 @@
+import random
+from datetime import datetime, timedelta
+
+def generate_random_dates(num_dates):
+    base_date = datetime.today()
+    random_dates = [(base_date + timedelta(days=random.randint(1, 365))).strftime('%Y-%m-%d') for _ in range(num_dates)]
+    return random_dates
+
+def generate_random_days(num_days):
+    days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return random.choices(days_of_week, k=num_days)
+
+def generate_random_months(num_months):
+    months_of_year = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    return random.choices(months_of_year, k=num_months)
+
+def generate_random_numbers(num_numbers):
+    return [random.randint(1, 100) for _ in range(num_numbers)]
+
+# How many of each to generate
+num_items = 5
+
+# Generate the random items
+dates = generate_random_dates(num_items)
+days = generate_random_days(num_items)
+months = generate_random_months(num_items)
+numbers = generate_random_numbers(num_items)
+
+# Combine all the items and shuffle them
+combined_items = dates + days + months + numbers
+random.shuffle(combined_items)
+
+# Output the shuffled list
+print(combined_items)
