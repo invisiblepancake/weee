@@ -1,0 +1,40 @@
+import random
+from datetime import datetime, timedelta
+
+def generate_random_dates(num_dates):
+    base_date = datetime.today()
+    random_dates = [(base_date + timedelta(days=random.randint(1, 365))).strftime('%d-%m-%Y') for _ in range(num_dates)]
+    return random_dates
+
+def generate_tongue_twisters(num_twisters):
+    twisters = [
+        'She sells sea shells by the sea shore',
+        'Peter Piper picked a peck of pickled peppers',
+        'How can a clam cram in a clean cream can?',
+        'I scream, you scream, we all scream for ice cream'
+    ]
+    return random.choices(twisters, k=num_twisters)
+
+def generate_random_words(num_words):
+    words = ['antidisestablishmentarianism', 'floccinaucinihilipilification', 'pseudopseudohypoparathyroidism']
+    return random.choices(words, k=num_words)
+
+def generate_numbers_as_words(num_numbers):
+    number_words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+    return random.choices(number_words, k=num_numbers)
+
+# How many of each to generate
+num_items = 5
+
+# Generate the random items
+dates = generate_random_dates(num_items)
+twisters = generate_tongue_twisters(num_items)
+words = generate_random_words(num_items)
+numbers = generate_numbers_as_words(num_items)
+
+# Combine all the items and shuffle them
+combined_items = dates + twisters + words + numbers
+random.shuffle(combined_items)
+
+# Output the shuffled list
+print(combined_items)
